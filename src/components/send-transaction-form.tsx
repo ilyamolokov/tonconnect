@@ -44,6 +44,7 @@ const SendTransactionForm = () => {
           ],
         },
         {
+          modals: ['before', 'success', 'error'],
           notifications: ["before", "success", "error"],
         }
       );
