@@ -22,16 +22,16 @@ const Address = (props: AddressProps) => {
       <span className="hidden md:block">{address}</span>
       <span className="md:hidden">{shortAddress}</span>
 
-      {/* // TODO: Add tooltip */}
       <Button
         onClick={handleCopy}
-        isIconOnly
+        isIconOnly={isCopied ? false : true}
         radius={"full"}
         variant={isCopied ? "bordered" : "solid"}
         className={isCopied ? "border-1" : "border-none"}
         color="primary"
+        size="sm"
       >
-        <CopyIcon />
+        {isCopied ? "Copied!" : <CopyIcon />}
       </Button>
     </div>
   );

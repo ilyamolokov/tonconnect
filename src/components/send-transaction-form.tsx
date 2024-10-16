@@ -3,11 +3,10 @@ import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { FormEvent, useMemo, useState } from "react";
 import { CHAIN, useTonConnectUI } from "@tonconnect/ui-react";
-import TransactionSubmitedModal from "./transaction-submited-modal";
+
 import toNano from "@/utils/toNano";
 
 const SendTransactionForm = () => {
-  // const [tonConnectUI, setOptions] = useTonConnectUI();
   const [tonConnectUI] = useTonConnectUI();
   const { balance, setBalance } = useBalance();
 
@@ -33,7 +32,7 @@ const SendTransactionForm = () => {
     }
     const sendAmount = Number(form.amount);
     try {
-      const result = await tonConnectUI.sendTransaction(
+      await tonConnectUI.sendTransaction(
         {
           validUntil: Math.floor(Date.now() / 1000) + 360,
           network: CHAIN.TESTNET,
@@ -45,12 +44,12 @@ const SendTransactionForm = () => {
           ],
         },
         {
-          notifications: ["error"],
+          notifications: ["before", "success", "error"],
         }
       );
-      console.log(result.boc)
       setBalance(balance - sendAmount);
     } catch (error) {
+      console.log(error);
       setErrorMessage("Transaction failed. Please try again.");
     } finally {
       setIsLoading(false);
@@ -67,8 +66,6 @@ const SendTransactionForm = () => {
 
     return validateAmount(form.amount) ? false : true;
   }, [form.amount]);
-
-  // const handleClose = () => setIsSubmitted(false);
 
   return (
     <>
@@ -109,8 +106,6 @@ const SendTransactionForm = () => {
           <div className="text-danger text-xs text-center">{errorMessage}</div>
         )}
       </form>
-
-      {/* <TransactionSubmitedModal isOpen={isSubmitted} onClose={handleClose} /> */}
     </>
   );
 };

@@ -6,7 +6,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/(button|image|input|modal|spinner|ripple).js",
+    "./node_modules/@nextui-org/theme/dist/components/(button|image|input|modal|spinner|popover|ripple).js"
   ],
   theme: {
     extend: {
@@ -17,16 +17,7 @@ const config: Config = {
         primary: {
           DEFAULT: "#0098EA",
           foreground: "#FFF",
-        },
-        // TODO: delete if not needed
-        // secondary: {
-        //   DEFAULT: "#FFF",
-        //   foreground: "#FFF",
-        // },
-        // default: {
-        //   DEFAULT: "#333333",
-        //   foreground: "#000",
-        // },
+        }
       },
     },
   },

@@ -18,8 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="font-mono antialiased min-h-screen"
-        // suppressHydrationWarning
+        className="font-mono antialiased min-h-screen" suppressHydrationWarning
       >
         <Providers>
           <Suspense>
